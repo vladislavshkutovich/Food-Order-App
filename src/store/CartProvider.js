@@ -7,8 +7,11 @@ const defaultCartState = {
 	totalAmount: 0,
 };
 
+// * Complex logic
 const cartReducer = (state, action) => {
+	// Adding +1 item to existing meal in cart
 	if (action.type === 'ADD') {
+		// Updating total price amount
 		const updatedTotalAmount =
 			state.totalAmount + action.item.price * action.item.amount;
 
@@ -34,6 +37,8 @@ const cartReducer = (state, action) => {
 			totalAmount: updatedTotalAmount,
 		};
 	}
+
+	// Removing 1 existing meal item from cart
 	if (action.type === 'REMOVE') {
 		const existingCartItemIndex = state.items.findIndex(
 			(item) => item.id === action.id
@@ -60,6 +65,7 @@ const cartReducer = (state, action) => {
 	return defaultCartState;
 };
 
+// * Stateful wrapper provider
 const CartProvider = (props) => {
 	const [cartState, dispatchCartAction] = useReducer(
 		cartReducer,

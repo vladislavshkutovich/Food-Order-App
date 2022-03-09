@@ -2,6 +2,7 @@ import Card from '../UI/Card';
 import MealItem from './MealItem/MealItem';
 import classes from './AvailableMeals.module.css';
 
+// ! In future there will be fetched data from API
 const DUMMY_MEALS = [
 	{
 		id: 'm1',

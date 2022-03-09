@@ -6,21 +6,25 @@ import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
 
 const Cart = (props) => {
+	// Hooking context from <CartProvider />
 	const cartCtx = useContext(CartContext);
 
 	const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
 	const hasItems = cartCtx.items.length > 0;
 
+	// Removing item according to its id
 	const cartItemRemoveHandler = (id) => {
 		cartCtx.removeItem(id);
 	};
 
+	// Adding +1 item into cart
 	const cartItemAddHandler = (item) => {
 		cartCtx.addItem({ ...item, amount: 1 });
 	};
 
 	const cartItems = (
 		<ul className={classes['cart-items']}>
+			{/* Pasting every single item according to meals data */}
 			{cartCtx.items.map((item) => (
 				<CartItem
 					key={item.id}

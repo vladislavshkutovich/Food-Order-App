@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Input from '../../UI/Input';
 import classes from './MealItemForm.module.css';
 
+// * Stateful component for adding meals to cart
 const MealItemForm = (props) => {
 	const amountInputRef = useRef();
 	const [amountIsValid, setAmountIsValid] = useState(true);
